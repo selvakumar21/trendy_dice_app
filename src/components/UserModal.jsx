@@ -1,22 +1,23 @@
 import { Form, Input, Modal } from "antd";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setCurrentUsers } from "../features/users";
+import { setUsers } from "../features/users";
 
-   const UpdateModal = ({ edit, setEdit, user }) => {
+   const UserModal = ({ edit, setEdit, user }) => {
    const users = useSelector((state) => state.users.currentUsers);
    const dispatch = useDispatch();
-   const { id, name, email, phone, website } = user;
+   const { id, name, email, phone, website, username } = user;
    const [form] = Form.useForm();
    const handleSubmit = () => {
       form
          .validateFields()
          .then((values) => {
-            const restUsers = users.filter((usr) => usr.id !== id);
-            let updatedUser = users.find((usr) => usr.id === id);
+            let updatedUser = users.find((user) => user.id === id);
             updatedUser = values;
-            const allUsers = [...restUsers, updatedUser];
-            dispatch(setCurrentUsers(allUsers));
+            updatedUser.username = username;
+            const allUsers = [...users]
+            allUsers[id-1] = updatedUser;
+            dispatch(setUsers(allUsers));
             setEdit(!edit);
          })
          .catch((error) => {
@@ -63,4 +64,4 @@ import { setCurrentUsers } from "../features/users";
    );
 };
 
-export default UpdateModal;
+export default UserModal;

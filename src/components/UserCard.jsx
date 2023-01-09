@@ -1,16 +1,8 @@
 import { Card, Space } from "antd";
-import {
-   MailOutlined,
-   PhoneOutlined,
-   HeartOutlined,
-   HeartFilled,
-   EditOutlined,
-   DeleteFilled,
-   GlobalOutlined,
-} from "@ant-design/icons";
+import {MailOutlined,PhoneOutlined,HeartOutlined,HeartFilled,EditOutlined,DeleteFilled, GlobalOutlined,} from "@ant-design/icons";
 import React, { useState } from "react";
 import { Typography } from "antd";
-import UpdateModal from "./UpdateModal";
+import UserModal from "./UserModal";
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrentUsers } from "../features/users";
 
@@ -40,7 +32,7 @@ const UserCard = ({ user }) => {
          }}
          cover={
             <img
-               alt="userImage"
+               alt="userAvatar"
                src={`https://avatars.dicebear.com/v2/avataaars/${username}.svg?options[mood][]=happy`}
                style={{ height: "200px", width: "200px", margin: "auto" }}
             />
@@ -57,7 +49,7 @@ const UserCard = ({ user }) => {
                   <HeartOutlined
                      onClick={() => setLike((prev) => !prev)}
                      style={{ fontSize: "18px", color: "red" }}
-                     key="setting"
+                     key="like"
                   />
                )}
             </>,
@@ -80,7 +72,7 @@ const UserCard = ({ user }) => {
             </Text>
          </Space>
 
-         <UpdateModal user={user} edit={edit} setEdit={setEdit} />
+         <UserModal user={user} edit={edit} setEdit={setEdit} />
       </Card>
    );
 };
