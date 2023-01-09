@@ -9,8 +9,8 @@ import "./Users.css";
 const User = () => {
    const userList = useSelector((state) => state.users);
    const dispatch = useDispatch();
-   // console.log(userList);
-   const users = userList.users;
+   console.log(userList);
+   const users = userList.currentUsers;
 
    useEffect(() => {
       fetch("https://jsonplaceholder.typicode.com/users")

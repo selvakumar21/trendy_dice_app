@@ -1,5 +1,13 @@
 import { Card, Space } from "antd";
-import {MailOutlined,PhoneOutlined,HeartOutlined,HeartFilled,EditOutlined,DeleteFilled, GlobalOutlined,} from "@ant-design/icons";
+import {
+   MailOutlined,
+   PhoneOutlined,
+   HeartOutlined,
+   HeartFilled,
+   EditOutlined,
+   DeleteFilled,
+   GlobalOutlined,
+} from "@ant-design/icons";
 import React, { useState } from "react";
 import { Typography } from "antd";
 import UserModal from "./UserModal";
@@ -32,7 +40,7 @@ const UserCard = ({ user }) => {
          }}
          cover={
             <img
-               alt="userAvatar"
+               alt="userImage"
                src={`https://avatars.dicebear.com/v2/avataaars/${username}.svg?options[mood][]=happy`}
                style={{ height: "200px", width: "200px", margin: "auto" }}
             />
@@ -49,7 +57,7 @@ const UserCard = ({ user }) => {
                   <HeartOutlined
                      onClick={() => setLike((prev) => !prev)}
                      style={{ fontSize: "18px", color: "red" }}
-                     key="like"
+                     key="setting"
                   />
                )}
             </>,
